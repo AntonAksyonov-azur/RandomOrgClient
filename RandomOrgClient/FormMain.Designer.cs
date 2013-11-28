@@ -39,20 +39,20 @@
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbSavedSettings = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnRename = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.nudMin = new System.Windows.Forms.NumericUpDown();
-            this.nudMax = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnRewrite = new System.Windows.Forms.Button();
+            this.lbPresets = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnGetRandom = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.nudCount = new System.Windows.Forms.NumericUpDown();
-            this.btnGetRandom = new System.Windows.Forms.Button();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nudMax = new System.Windows.Forms.NumericUpDown();
+            this.nudMin = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbHistory = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -61,9 +61,9 @@
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMin)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -94,26 +94,29 @@
             // загрузитьСохраненныеЗначенияToolStripMenuItem
             // 
             this.загрузитьСохраненныеЗначенияToolStripMenuItem.Name = "загрузитьСохраненныеЗначенияToolStripMenuItem";
-            this.загрузитьСохраненныеЗначенияToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.загрузитьСохраненныеЗначенияToolStripMenuItem.Text = "Загрузить сохраненные значения...";
+            this.загрузитьСохраненныеЗначенияToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
+            this.загрузитьСохраненныеЗначенияToolStripMenuItem.Text = "Загрузить настроки программы...";
+            this.загрузитьСохраненныеЗначенияToolStripMenuItem.Click += new System.EventHandler(this.загрузитьСохраненныеЗначенияToolStripMenuItem_Click);
             // 
             // экспортироватьСохраненныеЗначенияToolStripMenuItem
             // 
             this.экспортироватьСохраненныеЗначенияToolStripMenuItem.Name = "экспортироватьСохраненныеЗначенияToolStripMenuItem";
-            this.экспортироватьСохраненныеЗначенияToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.экспортироватьСохраненныеЗначенияToolStripMenuItem.Text = "Экспортировать сохраненные значения...";
+            this.экспортироватьСохраненныеЗначенияToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
+            this.экспортироватьСохраненныеЗначенияToolStripMenuItem.Text = "Экспортировать настройки программы...";
+            this.экспортироватьСохраненныеЗначенияToolStripMenuItem.Click += new System.EventHandler(this.экспортироватьСохраненныеЗначенияToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(287, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(281, 6);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
             this.выходToolStripMenuItem.Text = "&Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // сервисToolStripMenuItem
             // 
@@ -128,6 +131,7 @@
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.настройкиToolStripMenuItem.Text = "&Настройки";
+            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
             // помощьToolStripMenuItem
             // 
@@ -142,18 +146,49 @@
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnRename);
-            this.groupBox1.Controls.Add(this.lbSavedSettings);
+            this.groupBox1.Controls.Add(this.btnRewrite);
+            this.groupBox1.Controls.Add(this.lbPresets);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(250, 204);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сохраненные настройки";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(131, 172);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(113, 23);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnRewrite
+            // 
+            this.btnRewrite.Location = new System.Drawing.Point(7, 172);
+            this.btnRewrite.Name = "btnRewrite";
+            this.btnRewrite.Size = new System.Drawing.Size(118, 23);
+            this.btnRewrite.TabIndex = 2;
+            this.btnRewrite.Text = "Изменить";
+            this.btnRewrite.UseVisualStyleBackColor = true;
+            this.btnRewrite.Click += new System.EventHandler(this.btnRewrite_Click);
+            // 
+            // lbPresets
+            // 
+            this.lbPresets.FormattingEnabled = true;
+            this.lbPresets.Location = new System.Drawing.Point(6, 19);
+            this.lbPresets.Name = "lbPresets";
+            this.lbPresets.ScrollAlwaysVisible = true;
+            this.lbPresets.Size = new System.Drawing.Size(237, 147);
+            this.lbPresets.TabIndex = 0;
+            this.lbPresets.SelectedIndexChanged += new System.EventHandler(this.lbPresets_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -174,14 +209,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Текущие настройки";
             // 
-            // lbSavedSettings
+            // label4
             // 
-            this.lbSavedSettings.FormattingEnabled = true;
-            this.lbSavedSettings.Location = new System.Drawing.Point(6, 19);
-            this.lbSavedSettings.Name = "lbSavedSettings";
-            this.lbSavedSettings.ScrollAlwaysVisible = true;
-            this.lbSavedSettings.Size = new System.Drawing.Size(237, 147);
-            this.lbSavedSettings.TabIndex = 0;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Название";
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(6, 35);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(191, 20);
+            this.tbName.TabIndex = 7;
             // 
             // btnAdd
             // 
@@ -191,71 +233,16 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Добавить";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnRename
+            // btnGetRandom
             // 
-            this.btnRename.Location = new System.Drawing.Point(7, 172);
-            this.btnRename.Name = "btnRename";
-            this.btnRename.Size = new System.Drawing.Size(118, 23);
-            this.btnRename.TabIndex = 2;
-            this.btnRename.Text = "Переименовать";
-            this.btnRename.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(131, 172);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(113, 23);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Удалить";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // nudMin
-            // 
-            this.nudMin.Location = new System.Drawing.Point(77, 61);
-            this.nudMin.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.nudMin.Name = "nudMin";
-            this.nudMin.Size = new System.Drawing.Size(120, 20);
-            this.nudMin.TabIndex = 0;
-            // 
-            // nudMax
-            // 
-            this.nudMax.Location = new System.Drawing.Point(77, 87);
-            this.nudMax.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.nudMax.Name = "nudMax";
-            this.nudMax.Size = new System.Drawing.Size(120, 20);
-            this.nudMax.TabIndex = 1;
-            this.nudMax.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 63);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "От:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "До:";
+            this.btnGetRandom.Location = new System.Drawing.Point(5, 172);
+            this.btnGetRandom.Name = "btnGetRandom";
+            this.btnGetRandom.Size = new System.Drawing.Size(191, 23);
+            this.btnGetRandom.TabIndex = 6;
+            this.btnGetRandom.Text = "Получить";
+            this.btnGetRandom.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -288,30 +275,52 @@
             0,
             0});
             // 
-            // btnGetRandom
+            // label2
             // 
-            this.btnGetRandom.Location = new System.Drawing.Point(5, 172);
-            this.btnGetRandom.Name = "btnGetRandom";
-            this.btnGetRandom.Size = new System.Drawing.Size(191, 23);
-            this.btnGetRandom.TabIndex = 6;
-            this.btnGetRandom.Text = "Получить";
-            this.btnGetRandom.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(25, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "До:";
             // 
-            // tbName
+            // label1
             // 
-            this.tbName.Location = new System.Drawing.Point(6, 35);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(191, 20);
-            this.tbName.TabIndex = 7;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "От:";
             // 
-            // label4
+            // nudMax
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Название";
+            this.nudMax.Location = new System.Drawing.Point(77, 87);
+            this.nudMax.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.nudMax.Name = "nudMax";
+            this.nudMax.Size = new System.Drawing.Size(120, 20);
+            this.nudMax.TabIndex = 1;
+            this.nudMax.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // nudMin
+            // 
+            this.nudMin.Location = new System.Drawing.Point(77, 61);
+            this.nudMin.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.nudMin.Name = "nudMin";
+            this.nudMin.Size = new System.Drawing.Size(120, 20);
+            this.nudMin.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -367,14 +376,16 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Text = "Random.og Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMin)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -397,8 +408,8 @@
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnRename;
-        private System.Windows.Forms.ListBox lbSavedSettings;
+        private System.Windows.Forms.Button btnRewrite;
+        private System.Windows.Forms.ListBox lbPresets;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbName;

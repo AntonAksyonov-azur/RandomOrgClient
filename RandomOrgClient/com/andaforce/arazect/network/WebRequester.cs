@@ -8,7 +8,9 @@ namespace RandomOrgClient.com.andaforce.arazect.network
 {
     public class WebRequester
     {
-        public int[] GetRequest(RandomSettingsRecord parameters)
+        private Dictionary<String, int[]> _cache = new Dictionary<string, int[]>();
+
+        public int[] GetRequest(RandomPresetRecord parameters)
         {
             return new int[0];
         }

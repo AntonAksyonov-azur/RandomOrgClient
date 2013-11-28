@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="com\andaforce\arazect\configuration\ConfigurationLoader.cs" />
+    <Compile Include="com\andaforce\arazect\configuration\ProgrammConfigInstance.cs" />
     <Compile Include="com\andaforce\arazect\configuration\ProgrammWorkingData.cs" />
     <Compile Include="com\andaforce\arazect\data\ProgrammSettings.cs" />
     <Compile Include="com\andaforce\arazect\format\CountSystemType.cs" />

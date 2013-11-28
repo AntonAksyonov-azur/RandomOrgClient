@@ -6,12 +6,12 @@ namespace RandomOrgClient.com.andaforce.arazect.configuration
 {
     public class ProgrammWorkingData : IConfigurationObject
     {
-        public List<RandomSettingsRecord> Records;
+        public List<RandomPresetRecord> Records;
         public ProgrammSettings ProgrammSettings;
 
         public void InitDefault()
         {
-            Records = new List<RandomSettingsRecord>();
+            Records = new List<RandomPresetRecord>();
             ProgrammSettings = new ProgrammSettings()
             {
                 CacheSequenceLenght = 10000,
