@@ -9,6 +9,7 @@ namespace RandomOrgClient
 {
     public partial class FormMain : Form
     {
+        private RandomRequester _requester = new RandomRequester();
         private Random _rnd = new Random();
 
         public FormMain()
@@ -192,7 +193,19 @@ namespace RandomOrgClient
 
         private void OnlineGeneration()
         {
-            throw new NotImplementedException();
+            int[] randomNumbers = _requester.GetRequest((int) nudMin.Value, (int) nudMax.Value, (int) nudCount.Value);
+            var sb = new StringBuilder();
+            for (int i = 0; i < randomNumbers.Length; i++)
+            {
+                sb.Append(randomNumbers[i]);
+
+                if (i < nudCount.Value - 1)
+                {
+                    sb.Append(", ");
+                }
+            }
+
+            lbHistory.Items.Add(sb.ToString());
         }
 
         private void OfflineGeneration()
@@ -200,7 +213,7 @@ namespace RandomOrgClient
             var sb = new StringBuilder();
             for (int i = 0; i < nudCount.Value; i++)
             {
-                var random = _rnd.Next((int)nudMin.Value, (int)nudMax.Value);
+                var random = _rnd.Next((int) nudMin.Value, (int) nudMax.Value);
                 sb.Append(random);
 
                 if (i < nudCount.Value - 1)

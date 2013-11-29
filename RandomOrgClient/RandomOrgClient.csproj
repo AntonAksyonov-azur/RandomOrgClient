@@ -53,7 +53,7 @@
     <Compile Include="com\andaforce\arazect\format\CountSystemType.cs" />
     <Compile Include="com\andaforce\arazect\format\RandomNumberType.cs" />
     <Compile Include="com\andaforce\arazect\data\RandomPresetRecord.cs" />
-    <Compile Include="com\andaforce\arazect\network\WebRequester.cs" />
+    <Compile Include="com\andaforce\arazect\network\RandomRequester.cs" />
     <Compile Include="FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
