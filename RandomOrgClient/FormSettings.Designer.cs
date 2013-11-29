@@ -42,6 +42,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbOfflineMode = new System.Windows.Forms.CheckBox();
+            this.btnQuotaCheck = new System.Windows.Forms.Button();
+            this.lQuotaInfo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSequenceLenght)).BeginInit();
@@ -56,7 +58,7 @@
             this.groupBox1.Controls.Add(this.cbCountSystem);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(350, 79);
+            this.groupBox1.Size = new System.Drawing.Size(373, 79);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры запроса";
@@ -74,7 +76,7 @@
             // 
             this.cbRandomGenerationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRandomGenerationType.FormattingEnabled = true;
-            this.cbRandomGenerationType.Location = new System.Drawing.Point(130, 46);
+            this.cbRandomGenerationType.Location = new System.Drawing.Point(156, 46);
             this.cbRandomGenerationType.Name = "cbRandomGenerationType";
             this.cbRandomGenerationType.Size = new System.Drawing.Size(211, 21);
             this.cbRandomGenerationType.TabIndex = 2;
@@ -93,7 +95,7 @@
             // 
             this.cbCountSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCountSystem.FormattingEnabled = true;
-            this.cbCountSystem.Location = new System.Drawing.Point(130, 19);
+            this.cbCountSystem.Location = new System.Drawing.Point(156, 19);
             this.cbCountSystem.Name = "cbCountSystem";
             this.cbCountSystem.Size = new System.Drawing.Size(211, 21);
             this.cbCountSystem.TabIndex = 0;
@@ -101,19 +103,21 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lQuotaInfo);
+            this.groupBox2.Controls.Add(this.btnQuotaCheck);
             this.groupBox2.Controls.Add(this.nudSequenceLenght);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.cbCacheSequences);
             this.groupBox2.Location = new System.Drawing.Point(12, 97);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(350, 70);
+            this.groupBox2.Size = new System.Drawing.Size(373, 92);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Параметры программы";
             // 
             // nudSequenceLenght
             // 
-            this.nudSequenceLenght.Location = new System.Drawing.Point(238, 42);
+            this.nudSequenceLenght.Location = new System.Drawing.Point(265, 42);
             this.nudSequenceLenght.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -159,7 +163,7 @@
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(206, 240);
+            this.btnOk.Location = new System.Drawing.Point(229, 262);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
@@ -170,7 +174,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(287, 240);
+            this.btnCancel.Location = new System.Drawing.Point(310, 262);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -182,9 +186,9 @@
             // 
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cbOfflineMode);
-            this.groupBox3.Location = new System.Drawing.Point(12, 173);
+            this.groupBox3.Location = new System.Drawing.Point(12, 195);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(350, 61);
+            this.groupBox3.Size = new System.Drawing.Size(373, 61);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Offline-режим";
@@ -209,11 +213,31 @@
             this.cbOfflineMode.UseVisualStyleBackColor = true;
             this.cbOfflineMode.CheckedChanged += new System.EventHandler(this.cbOfflineMode_CheckedChanged);
             // 
+            // btnQuotaCheck
+            // 
+            this.btnQuotaCheck.Location = new System.Drawing.Point(6, 60);
+            this.btnQuotaCheck.Name = "btnQuotaCheck";
+            this.btnQuotaCheck.Size = new System.Drawing.Size(115, 23);
+            this.btnQuotaCheck.TabIndex = 5;
+            this.btnQuotaCheck.Text = "Проверить квоту";
+            this.btnQuotaCheck.UseVisualStyleBackColor = true;
+            this.btnQuotaCheck.Click += new System.EventHandler(this.btnQuotaCheck_Click);
+            // 
+            // lQuotaInfo
+            // 
+            this.lQuotaInfo.AutoSize = true;
+            this.lQuotaInfo.Location = new System.Drawing.Point(127, 65);
+            this.lQuotaInfo.Name = "lQuotaInfo";
+            this.lQuotaInfo.Size = new System.Drawing.Size(221, 13);
+            this.lQuotaInfo.TabIndex = 6;
+            this.lQuotaInfo.Text = "Для IP 127.0.0.1 доступно 1 000 000 чисел";
+            this.lQuotaInfo.Visible = false;
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 270);
+            this.ClientSize = new System.Drawing.Size(393, 297);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -252,5 +276,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox cbOfflineMode;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lQuotaInfo;
+        private System.Windows.Forms.Button btnQuotaCheck;
     }
 }

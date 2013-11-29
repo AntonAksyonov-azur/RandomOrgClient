@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
+using System.Threading;
 using System.Windows.Forms;
 using RandomOrgClient.com.andaforce.arazect.configuration;
 using RandomOrgClient.com.andaforce.arazect.format;
+using RandomOrgClient.com.andaforce.arazect.network;
 
 namespace RandomOrgClient
 {
@@ -14,6 +17,9 @@ namespace RandomOrgClient
         }
 
         private ProgrammWorkingData _currentInstance;
+        private delegate void UpdateLabelStateDelegate(string ip, int quotaValue);
+
+        private UpdateLabelStateDelegate _updateLabelState;
 
         private readonly CountSystemType[] _countSystems =
         {
@@ -104,6 +110,29 @@ namespace RandomOrgClient
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnQuotaCheck_Click(object sender, EventArgs e)
+        {
+            _updateLabelState = delegate(string ip, int quotaValue)
+            {
+                lQuotaInfo.Text = String.Format("Для IP {0} доступно {1} чисел", ip, quotaValue);
+            };
+
+            lQuotaInfo.Visible = true;
+            lQuotaInfo.Text = "Запрашиваем данные...";
+            ThreadPool.QueueUserWorkItem(CheckQuota);
+        }
+
+        private void CheckQuota(object state)
+        {
+            var webClient = new WebClient();
+            String ip = webClient.DownloadString("http://ifconfig.me/ip").Replace("\n", "");
+
+            var requester = new RandomRequester();
+            int quotaValue = requester.RequestQuota();
+
+           lQuotaInfo.Invoke(_updateLabelState, ip, quotaValue);
         }
     }
 }

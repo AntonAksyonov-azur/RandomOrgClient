@@ -12,7 +12,8 @@ namespace RandomOrgClient.com.andaforce.arazect.network
 {
     public class RandomRequester
     {
-        private const String Address = "http://www.random.org/integers";
+        private const String IntegersAddress = "http://www.random.org/integers";
+        private const String QuotaAddress = "http://www.random.org/quota/?format=plain";
         // http://www.random.org/integers/?num=10&min=1&max=6&col=1&base=10&format=plain&rnd=new
         private Dictionary<String, List<int>> _cache = new Dictionary<string, List<int>>();
         private MD5 _md5Hash;
@@ -32,7 +33,7 @@ namespace RandomOrgClient.com.andaforce.arazect.network
             {
                 var requestString =
                     String.Format("{0}?num={1}&min={2}&max={3}&base={4}&rnd={5}&format=plain&col=1",
-                        Address,
+                        IntegersAddress,
                         elementsToReceive,
                         min,
                         max,
@@ -62,6 +63,21 @@ namespace RandomOrgClient.com.andaforce.arazect.network
             _cache[md5String].RemoveRange(0, count);
 
             return result;
+        }
+
+        public int RequestQuota()
+        {
+            var webRequest = WebRequest.Create(QuotaAddress);
+            var response = (HttpWebResponse)webRequest.GetResponse();
+            var dataStream = response.GetResponseStream();
+            if (dataStream != null)
+            {
+                var reader = new StreamReader(dataStream);
+                string content = reader.ReadToEnd();
+                return int.Parse(content);
+            }
+
+            return -1;
         }
     }
 }
