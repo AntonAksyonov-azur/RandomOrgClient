@@ -17,7 +17,8 @@ namespace RandomOrgClient.com.andaforce.arazect.configuration
                 CacheSequenceLenght = 10000,
                 CountSystem = CountSystemType.Decimal,
                 RandomNumberType = RandomNumberType.New,
-                UseCache = true
+                UseCache = true,
+                OfflineMode = false
             };
         }
     }

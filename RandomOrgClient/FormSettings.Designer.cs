@@ -36,12 +36,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nudSequenceLenght = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.chCacheSequences = new System.Windows.Forms.CheckBox();
+            this.cbCacheSequences = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cbOfflineMode = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSequenceLenght)).BeginInit();
@@ -74,14 +74,11 @@
             // 
             this.cbRandomGenerationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRandomGenerationType.FormattingEnabled = true;
-            this.cbRandomGenerationType.Items.AddRange(new object[] {
-            "new",
-            "id.identifier",
-            "date.isodate"});
             this.cbRandomGenerationType.Location = new System.Drawing.Point(130, 46);
             this.cbRandomGenerationType.Name = "cbRandomGenerationType";
             this.cbRandomGenerationType.Size = new System.Drawing.Size(211, 21);
             this.cbRandomGenerationType.TabIndex = 2;
+            this.cbRandomGenerationType.SelectedIndexChanged += new System.EventHandler(this.cbRandomGenerationType_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -96,21 +93,17 @@
             // 
             this.cbCountSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCountSystem.FormattingEnabled = true;
-            this.cbCountSystem.Items.AddRange(new object[] {
-            "Двоичная (основание 2, bin)",
-            "Восьмеричная (основание 8, oct)",
-            "Десятичная (основание 10, dec)",
-            "Шестнадцатиричная (основание 16, hex)"});
             this.cbCountSystem.Location = new System.Drawing.Point(130, 19);
             this.cbCountSystem.Name = "cbCountSystem";
             this.cbCountSystem.Size = new System.Drawing.Size(211, 21);
             this.cbCountSystem.TabIndex = 0;
+            this.cbCountSystem.SelectedIndexChanged += new System.EventHandler(this.cbCountSystem_SelectedIndexChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.nudSequenceLenght);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.chCacheSequences);
+            this.groupBox2.Controls.Add(this.cbCacheSequences);
             this.groupBox2.Location = new System.Drawing.Point(12, 97);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(350, 70);
@@ -139,6 +132,7 @@
             0,
             0,
             0});
+            this.nudSequenceLenght.ValueChanged += new System.EventHandler(this.nudSequenceLenght_ValueChanged);
             // 
             // label3
             // 
@@ -149,17 +143,18 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Длина кэшированной последовательности";
             // 
-            // chCacheSequences
+            // cbCacheSequences
             // 
-            this.chCacheSequences.AutoSize = true;
-            this.chCacheSequences.Checked = true;
-            this.chCacheSequences.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chCacheSequences.Location = new System.Drawing.Point(9, 19);
-            this.chCacheSequences.Name = "chCacheSequences";
-            this.chCacheSequences.Size = new System.Drawing.Size(229, 17);
-            this.chCacheSequences.TabIndex = 0;
-            this.chCacheSequences.Text = "Кэшировать последовательности чисел";
-            this.chCacheSequences.UseVisualStyleBackColor = true;
+            this.cbCacheSequences.AutoSize = true;
+            this.cbCacheSequences.Checked = true;
+            this.cbCacheSequences.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCacheSequences.Location = new System.Drawing.Point(9, 19);
+            this.cbCacheSequences.Name = "cbCacheSequences";
+            this.cbCacheSequences.Size = new System.Drawing.Size(229, 17);
+            this.cbCacheSequences.TabIndex = 0;
+            this.cbCacheSequences.Text = "Кэшировать последовательности чисел";
+            this.cbCacheSequences.UseVisualStyleBackColor = true;
+            this.cbCacheSequences.CheckedChanged += new System.EventHandler(this.cbCacheSequences_CheckedChanged);
             // 
             // btnOk
             // 
@@ -170,6 +165,7 @@
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -180,27 +176,18 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.cbOfflineMode);
             this.groupBox3.Location = new System.Drawing.Point(12, 173);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(350, 61);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Offline-режим";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(217, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Не использовать связь с Random.org";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -210,6 +197,17 @@
             this.label4.Size = new System.Drawing.Size(242, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Остальные настройки не будут использованы";
+            // 
+            // cbOfflineMode
+            // 
+            this.cbOfflineMode.AutoSize = true;
+            this.cbOfflineMode.Location = new System.Drawing.Point(9, 19);
+            this.cbOfflineMode.Name = "cbOfflineMode";
+            this.cbOfflineMode.Size = new System.Drawing.Size(217, 17);
+            this.cbOfflineMode.TabIndex = 0;
+            this.cbOfflineMode.Text = "Не использовать связь с Random.org";
+            this.cbOfflineMode.UseVisualStyleBackColor = true;
+            this.cbOfflineMode.CheckedChanged += new System.EventHandler(this.cbOfflineMode_CheckedChanged);
             // 
             // FormSettings
             // 
@@ -221,8 +219,12 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormSettings";
             this.Text = "Настройки";
+            this.Load += new System.EventHandler(this.FormSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -244,11 +246,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown nudSequenceLenght;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chCacheSequences;
+        private System.Windows.Forms.CheckBox cbCacheSequences;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbOfflineMode;
         private System.Windows.Forms.Label label4;
     }
 }

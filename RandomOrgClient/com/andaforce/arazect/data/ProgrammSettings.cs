@@ -12,5 +12,6 @@ namespace RandomOrgClient.com.andaforce.arazect.data
         public RandomNumberType RandomNumberType;
         public bool UseCache;
         public int CacheSequenceLenght;
+        public bool OfflineMode;
     }
 }

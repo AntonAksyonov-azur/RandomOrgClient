@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+using RandomOrgClient.com.andaforce.arazect.data;
 
 namespace RandomOrgClient.com.andaforce.arazect.configuration
 {
@@ -17,6 +17,27 @@ namespace RandomOrgClient.com.andaforce.arazect.configuration
         public static void Save()
         {
             ConfigurationLoader.SaveConfiguration(_instance, PathToConfig);
+        }
+
+        public static ProgrammWorkingData GetCopy()
+        {
+            return new ProgrammWorkingData()
+            {
+                ProgrammSettings = new ProgrammSettings()
+                {
+                    CountSystem = _instance.ProgrammSettings.CountSystem,
+                    RandomNumberType = _instance.ProgrammSettings.RandomNumberType,
+                    UseCache = _instance.ProgrammSettings.UseCache,
+                    CacheSequenceLenght = _instance.ProgrammSettings.CacheSequenceLenght,
+                    OfflineMode = _instance.ProgrammSettings.OfflineMode
+                },
+                Records = _instance.Records
+            };
+        }
+
+        public static void Replace(ProgrammWorkingData anotherInstance)
+        {
+            _instance = anotherInstance;
         }
 
         public static ProgrammWorkingData Get()

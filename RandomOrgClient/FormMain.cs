@@ -103,7 +103,7 @@ namespace RandomOrgClient
                     MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    _programmWorkingData.Records.Remove((RandomPresetRecord) lbPresets.SelectedItem);
+                    ProgrammConfigInstance.Get().Records.Remove((RandomPresetRecord) lbPresets.SelectedItem);
                     UpdateBinding(() => lbPresets.SelectedIndex = lbPresets.Items.Count - 1);
                 }
             }
