@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Forms;
 using RandomOrgClient.com.andaforce.arazect.configuration;
 using RandomOrgClient.com.andaforce.arazect.data;
+using RandomOrgClient.com.andaforce.arazect.network;
 
 namespace RandomOrgClient
 {
     public partial class FormMain : Form
     {
+        private Random _rnd = new Random();
+
         public FormMain()
         {
             InitializeComponent();
@@ -174,6 +178,56 @@ namespace RandomOrgClient
 
         #endregion
 
+        private void btnGetRandom_Click(object sender, EventArgs e)
+        {
+            if (ProgrammConfigInstance.Get().ProgrammSettings.OfflineMode)
+            {
+                OfflineGeneration();
+            }
+            else
+            {
+                OnlineGeneration();
+            }
+        }
+
+        private void OnlineGeneration()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OfflineGeneration()
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < nudCount.Value; i++)
+            {
+                var random = _rnd.Next((int)nudMin.Value, (int)nudMax.Value);
+                sb.Append(random);
+
+                if (i < nudCount.Value - 1)
+                {
+                    sb.Append(", ");
+                }
+            }
+
+            lbHistory.Items.Add(sb.ToString());
+        }
+
         #endregion
+
+        private void nudMin_ValueChanged(object sender, EventArgs e)
+        {
+            if (nudMin.Value > nudMax.Value)
+            {
+                nudMax.Value = nudMin.Value;
+            }
+        }
+
+        private void nudMax_ValueChanged(object sender, EventArgs e)
+        {
+            if (nudMax.Value < nudMin.Value)
+            {
+                nudMin.Value = nudMax.Value;
+            }
+        }
     }
 }

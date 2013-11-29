@@ -129,7 +129,7 @@
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.настройкиToolStripMenuItem.Text = "&Настройки";
             this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
@@ -144,7 +144,7 @@
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -243,6 +243,7 @@
             this.btnGetRandom.TabIndex = 6;
             this.btnGetRandom.Text = "Получить";
             this.btnGetRandom.UseVisualStyleBackColor = true;
+            this.btnGetRandom.Click += new System.EventHandler(this.btnGetRandom_Click);
             // 
             // label3
             // 
@@ -309,6 +310,7 @@
             0,
             0,
             0});
+            this.nudMax.ValueChanged += new System.EventHandler(this.nudMax_ValueChanged);
             // 
             // nudMin
             // 
@@ -321,6 +323,7 @@
             this.nudMin.Name = "nudMin";
             this.nudMin.Size = new System.Drawing.Size(120, 20);
             this.nudMin.TabIndex = 0;
+            this.nudMin.ValueChanged += new System.EventHandler(this.nudMin_ValueChanged);
             // 
             // groupBox3
             // 
